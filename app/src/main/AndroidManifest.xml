@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.script_em">
+<!--    <Button-->
+<!--            android:id="@id+/clear"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/Clear"-->
+<!--            android:onClick="sendMessage" />-->
 
 
     <application
