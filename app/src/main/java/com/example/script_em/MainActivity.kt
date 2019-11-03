@@ -1,5 +1,6 @@
 package com.example.script_em
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.support.v7.app.AppCompatActivity
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     var prevy: Float =0F
     var bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
     var canvas = Canvas(bitmap)
+    //var Swap:Button = newsymbol
 
     var size: Double = 8.0
     var selectedChar: Char = Char(listOf())
@@ -46,12 +48,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        canvas.drawColor(Color.LTGRAY)
-        imageV.background = BitmapDrawable(getResources(), bitmap)
+                super.onCreate(savedInstanceState)
+                setContentView(R.layout.activity_main)
+                canvas.drawColor(Color.LTGRAY)
+                //imageV.background = BitmapDrawable(getResources(), bitmap)
+
+            }
+            fun Clearing(view: View) {
+                val button: Button = findViewById(R.id.clear)
+                button.setOnClickListener {
+                    bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
+                    canvas = Canvas(bitmap)
+                    canvas.drawColor(Color.LTGRAY)
+                    imageV.background = BitmapDrawable(getResources(), bitmap)
+                    prevx = 0F
+                    prevy = 0F
+
+                }
+            }
+            fun newsymbol(view: View){
+                val button: Button = findViewById(R.id.Next)
+                button.setOnClickListener {
+                    //server pick one at random
+
+        }
     }
-    fun sendMessage(view: View) {
+    fun NewInput(view: View){
+
+    }
+    fun SendForChecking(view: View) {
         val button: Button = findViewById(R.id.clear)
         button.setOnClickListener {
             bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
@@ -63,6 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
