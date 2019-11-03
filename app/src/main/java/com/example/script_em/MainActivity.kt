@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
         return when (action) {
 
-
+//work
             (MotionEvent.ACTION_MOVE) -> {
 
                 val vertoffset: Float = event.y.toInt().toFloat()
