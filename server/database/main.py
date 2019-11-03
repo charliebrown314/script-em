@@ -10,6 +10,7 @@ def table():
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS characters (CHAR_NAME TEXT, points TEXT)")
     conn.commit()
+    return 0
 
 @app.route('/saveChar', methods = ['GET'])
 def saveChar(name, jsonString):
@@ -17,6 +18,7 @@ def saveChar(name, jsonString):
     cursor = conn.cursor()
     cursor.execute("INSERT INTO characters VALUES (?,?)", (name, jsonString))
     conn.commit()
+    return 0
 
 @app.route('/sendInput', methods = ['GET', 'POST'])
 def sendInputResponse(jsonString):
