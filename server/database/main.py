@@ -1,21 +1,18 @@
 from flask import Flask
 import json
-import mysql.connector
+import sqlite3
 
 app = Flask(__name__)
-db = mysql.connector.connect(host="8080",user="root",password="password")
+conn = sqlite3.connect()
 
-cursor = db.cursor()
-
-@app.route('/')
-def createTable():
-    cursor.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
 
 @app.route('/saveChar', methods = ['GET'])
 def saveChar(name, jsonString):
     cursor.execute("INSERT INTO characters VALUES (?,?)", (name, jsonString))
 
-db.commit()
+conn.commit()
 
 @app.route('/sendInput', methods = ['GET', 'POST'])
 def sendInputResponse(jsonString):
