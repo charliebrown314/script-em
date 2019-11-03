@@ -5,11 +5,11 @@ import com.example.script_em.structures.Point
 
 object check_input {
 
-    fun isInRange(correctList: MutableSet<Point>, input: Point): Pair<Boolean, Point> {
+    fun isInRange(correctList: MutableSet<Point>, input: Point, size: Double): Pair<Boolean, Point> {
         for (point in correctList) {
             //  point falls within the accepted range
-            if ((input.x > point.x-point.size && input.x < point.x + point.size)
-                && (input.y > point.y-point.size && input.y < point.y+point.size)) {
+            if ((input.x > point.x-size && input.x < point.x + size)
+                && (input.y > point.y-size && input.y < point.y+size)) {
                 return Pair(true, point)
             }
         }
@@ -22,7 +22,7 @@ object check_input {
         var length: Int = 0
         var passed: Int = 0
         for (point in input.points) {
-            val inRange = isInRange(correct.points, point)
+            val inRange = isInRange(correct.points, point, correct.pointSize)
             if (inRange.first) {
                 correctListChecklist.remove(inRange.second)
                 passed++

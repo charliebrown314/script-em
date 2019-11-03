@@ -7,18 +7,17 @@ object makeChar {
 
     var char: MutableSet<Point> = mutableSetOf()
 
-    fun addToChar(x: Double, y: Double, size: Double) {
-        val pt = Point(x,y)
-        pt.size = size
-        char.add(pt)
+    fun addToChar(x: Double, y: Double) {
+        char.add(Point(x,y))
 
     }
 
 
-    fun finishChar(name: String) {
+    fun finishChar(name: String, size: Double) {
         khttp.post(
             url = "pythonserverurl/saveChar",
-            json = mapOf("name" to name, "points" to json { array(char) }.toJsonString())
+            json = mapOf("name" to name,
+                "points" to json { array(char) }.toJsonString(), "size" to size.toString())
         )
     }
 }
