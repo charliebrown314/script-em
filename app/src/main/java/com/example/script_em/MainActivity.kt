@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun NewInput(view: View){
-
+        com.example.script_em.writingProcessing.create.makeChar.finishChar(size, storage)
     }
     fun SendForChecking(view: View) {
         val button: Button = findViewById(R.id.clear)
