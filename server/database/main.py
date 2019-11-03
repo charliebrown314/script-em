@@ -4,17 +4,15 @@ import sqlite3
 
 app = Flask(__name__)
 conn = sqlite3.connect('test.db')
+c = conn.cursor()
 
 @app.route('/')
 def createTable():
-    conn.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
+    c.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
 
 @app.route('/saveChar', methods = ['GET'])
-def saveChar(jsonString):
-    parse = json.loads(jsonString)
-    name = parse("name")
-    arrayPoints = json.dumps(parse("points"))
-    conn.execute("INSERT INTO characters VALUES (?,?)", (name, arrayPoints))
+def saveChar(name, jsonString):
+    c.execute("INSERT INTO characters VALUES (?,?)", (name, jsonString))
 
 conn.commit()
 conn.close()
