@@ -18,6 +18,7 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import com.example.script_em.structures.Char
 import com.example.script_em.structures.Storage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -75,6 +76,12 @@ class MainActivity : AppCompatActivity() {
     fun NewInput(view: View){
         com.example.script_em.writingProcessing.create.makeChar.finishChar(size, storage)
     }
+    fun CurrentSym(Str: String){
+        val textView = findViewById<TextView>(R.id.editText)
+        textView.setText("string").toString()
+        val textViewValue = textView.text
+    }
+
     fun SendForChecking(view: View) {
         val button: Button = findViewById(R.id.clear)
         button.setOnClickListener {
