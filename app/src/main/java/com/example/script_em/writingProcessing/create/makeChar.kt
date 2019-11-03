@@ -3,6 +3,7 @@ package com.example.script_em.writingProcessing.create
 import com.beust.klaxon.json
 import com.example.script_em.structures.Char
 import com.example.script_em.structures.Point
+import com.example.script_em.structures.Storage
 
 object makeChar {
 
@@ -19,8 +20,11 @@ object makeChar {
         return Char
     }
 
-    fun finishChar(size: Double) {
-
+    fun clear(){
+        char = mutableSetOf()
+    }
+    fun finishChar(size: Double, storage: Storage) {
+        storage.charList += finalizeChar(size)
 //        khttp.post(
 //            url = "https:///saveChar",
 //            json = mapOf("name" to name,

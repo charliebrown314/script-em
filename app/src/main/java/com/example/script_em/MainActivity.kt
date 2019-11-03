@@ -19,6 +19,7 @@ import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.widget.Button
 import com.example.script_em.structures.Char
+import com.example.script_em.structures.Storage
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val DEBUG_TAG = "Velocity"
@@ -31,21 +32,10 @@ class MainActivity : AppCompatActivity() {
     var canvas = Canvas(bitmap)
     //var Swap:Button = newsymbol
 
+    var storage: Storage = Storage()
     var size: Double = 8.0
     var selectedChar: Char = Char(listOf())
-    var checking: Boolean = false
-    var name: String = ""
 
-
-    fun process(){
-        if(checking){
-            com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
-                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size))
-        }
-        else{
-            com.example.script_em.writingProcessing.create.makeChar.finishChar(name, size)
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
@@ -63,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     imageV.background = BitmapDrawable(getResources(), bitmap)
                     prevx = 0F
                     prevy = 0F
-
+                    com.example.script_em.writingProcessing.create.makeChar.clear()
                 }
             }
             fun newsymbol(view: View){
@@ -107,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 val vertoffset: Float = event.y.toInt().toFloat()
                 val horoffset: Float = event.x.toInt().toFloat()
 
-
+                com.example.script_em.writingProcessing.create.makeChar.addToChar(horoffset.toDouble(),vertoffset.toDouble())
                 // canvas background color
 
                 var paint = Paint()
