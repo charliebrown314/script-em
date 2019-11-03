@@ -60,7 +60,16 @@ class MainActivity : AppCompatActivity() {
                 val button: Button = findViewById(R.id.Next)
                 button.setOnClickListener {
                     //server pick one at random
-
+                    if(storage.charList.size - 1 > storage.selectedChar){
+                     storage.selectedChar += 1
+                        selectedChar = storage.charList[storage.selectedChar]
+                    }
+                    else {
+                        if (storage.selectedChar != 0) {
+                            storage.selectedChar = 0
+                            selectedChar = storage.charList[storage.selectedChar]
+                        }
+                    }
         }
     }
     fun NewInput(view: View){
@@ -75,7 +84,8 @@ class MainActivity : AppCompatActivity() {
             imageV.background = BitmapDrawable(getResources(), bitmap)
             prevx = 0F
             prevy = 0F
-
+            com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
+                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size))
         }
     }
 
