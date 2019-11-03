@@ -19,11 +19,12 @@ object makeChar {
         return Char
     }
 
-    fun finishChar(name: String, size: Double) {
-        khttp.post(
-            url = "https:///saveChar",
-            json = mapOf("name" to name,
-                "points" to json { array(char) }.toJsonString(), "size" to size.toString())
-        )
+    fun finishChar(size: Double) {
+
+//        khttp.post(
+//            url = "https:///saveChar",
+//            json = mapOf("name" to name,
+//                "points" to json { array(char) }.toJsonString(), "size" to size.toString())
+//        )
     }
 }

@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     var selectedChar: Char = Char(listOf())
     var checking: Boolean = false
     var name: String = ""
+
+
     fun process(){
         if(checking){
             com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
