@@ -16,8 +16,8 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="-16dp" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp" />
 
     <Button
             android:id="@+id/clear"
@@ -49,7 +49,7 @@
             android:layout_width="232dp"
             android:layout_height="45dp"
             android:layout_marginTop="580dp"
-            android:text="Check  70%"
+            android:text="Check"
             android:onClick="SendForChecking"
             app:layout_constraintBottom_toBottomOf="@+id/imageV"
             app:layout_constraintEnd_toEndOf="@+id/imageV"
@@ -102,6 +102,21 @@
             app:layout_constraintStart_toStartOf="@+id/imageV"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.917" />
+
+    <EditText
+            android:id="@+id/editText2"
+            android:layout_width="144dp"
+            android:layout_height="39dp"
+            android:text="Enter Name"
+            app:layout_constraintEnd_toEndOf="@+id/imageV"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="6dp"
+    app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintTop_toTopOf="@+id/imageV"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="99dp" />
+
+
 </android.support.constraint.ConstraintLayout>
 </RelativeLayout>
 

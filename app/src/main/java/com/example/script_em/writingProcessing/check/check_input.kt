@@ -55,6 +55,9 @@ object check_input {
         }
         val percentIn = (passed.toDouble() / length.toDouble())
         val squaresFilled = 1 - (correctListChecklist.size.toDouble()/correct.points.size.toDouble())
+        println(percentIn.toString() + ", " + squaresFilled)
+        println(correct.points[0].toString())
+        println(input.points[0])
         return ((percentIn * .4) + (squaresFilled * .6)) * 100
     }
 

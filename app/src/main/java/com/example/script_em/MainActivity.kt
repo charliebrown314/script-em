@@ -64,25 +64,55 @@ class MainActivity : AppCompatActivity() {
                     if(storage.charList.size - 1 > storage.selectedChar){
                      storage.selectedChar += 1
                         selectedChar = storage.charList[storage.selectedChar]
+                        CurrentSym("Current character is: index " + storage.selectedChar)
                     }
                     else {
                         if (storage.selectedChar != 0) {
                             storage.selectedChar = 0
                             selectedChar = storage.charList[storage.selectedChar]
+                            CurrentSym("Current character is: index " + storage.selectedChar)
+                        }
+                        else{
+                            CurrentSym("Current character is: index " + storage.selectedChar)
                         }
                     }
         }
     }
     fun NewInput(view: View){
         com.example.script_em.writingProcessing.create.makeChar.finishChar(size, storage)
+        selectedChar = storage.charList[storage.selectedChar]
+        bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
+        canvas = Canvas(bitmap)
+        canvas.drawColor(Color.LTGRAY)
+        imageV.background = BitmapDrawable(getResources(), bitmap)
+        prevx = 0F
+        prevy = 0F
     }
 
 
 
     fun CurrentSym(Str: String){
         val textView = findViewById<TextView>(R.id.editText)
-        textView.setText("string").toString()
+        textView.setText(Str)
         val textViewValue = textView.text
+        bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
+        canvas = Canvas(bitmap)
+        canvas.drawColor(Color.LTGRAY)
+        imageV.background = BitmapDrawable(getResources(), bitmap)
+        prevx = 0F
+        prevy = 0F
+
+    }
+    fun add(): String {
+        val textView = findViewById<TextView>(R.id.editText2)
+        val textViewValue = textView.text
+        bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
+        canvas = Canvas(bitmap)
+        canvas.drawColor(Color.LTGRAY)
+        imageV.background = BitmapDrawable(getResources(), bitmap)
+        prevx = 0F
+        prevy = 0F
+        return textViewValue.toString()
     }
 
     fun SendForChecking(view: View) {
