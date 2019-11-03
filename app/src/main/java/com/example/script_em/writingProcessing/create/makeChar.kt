@@ -23,8 +23,10 @@ object makeChar {
     fun clear(){
         char = mutableSetOf()
     }
-    fun finishChar(size: Double, storage: Storage) {
-        storage.charList += finalizeChar(size)
+    fun finishChar(name: String, size: Double, storage: Storage) {
+        val toAdd = finalizeChar(size)
+        toAdd.name = name
+        storage.charList += toAdd
 //        khttp.post(
 //            url = "https:///saveChar",
 //            json = mapOf("name" to name,

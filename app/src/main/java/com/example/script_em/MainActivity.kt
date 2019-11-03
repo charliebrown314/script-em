@@ -64,22 +64,22 @@ class MainActivity : AppCompatActivity() {
                     if(storage.charList.size - 1 > storage.selectedChar){
                      storage.selectedChar += 1
                         selectedChar = storage.charList[storage.selectedChar]
-                        CurrentSym("Current character is: index " + storage.selectedChar)
+                        CurrentSym("Current character is: " + selectedChar.name)
                     }
                     else {
                         if (storage.selectedChar != 0) {
                             storage.selectedChar = 0
                             selectedChar = storage.charList[storage.selectedChar]
-                            CurrentSym("Current character is: index " + storage.selectedChar)
+                            CurrentSym("Current character is: " + selectedChar.name)
                         }
                         else{
-                            CurrentSym("Current character is: index " + storage.selectedChar)
+                            CurrentSym("Current character is: " + selectedChar.name)
                         }
                     }
         }
     }
     fun NewInput(view: View){
-        com.example.script_em.writingProcessing.create.makeChar.finishChar(size, storage)
+        com.example.script_em.writingProcessing.create.makeChar.finishChar(add(), size, storage)
         selectedChar = storage.charList[storage.selectedChar]
         bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
         canvas = Canvas(bitmap)
