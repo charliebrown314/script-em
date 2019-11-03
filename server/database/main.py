@@ -27,10 +27,13 @@ def make_app():
     return tornado.web.Application({
         (r"/", MainHandler),
         (r"/saveChar", NewCharHandler),
-        (r"", sendInputResponse)
+        (r"/help", sendInputResponse)
     })
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(8080)
+    app.listen(888)
     tornado.ioloop.IOLoop.current().start()
+
+conn.commit()
+conn.close()
