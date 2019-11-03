@@ -25,7 +25,7 @@ private const val DEBUG_TAG = "Velocity"
 class MainActivity : AppCompatActivity() {
     var prevx: Float = 0F
     var prevy: Float =0F
-    var bitmap = Bitmap.createBitmap(1080, 2160, Bitmap.Config.ARGB_4444)
+    var bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
     var canvas = Canvas(bitmap)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,24 +37,27 @@ class MainActivity : AppCompatActivity() {
     fun sendMessage(view: View) {
         val button: Button = findViewById(R.id.clear)
         button.setOnClickListener {
-            bitmap = Bitmap.createBitmap(1080, 2160, Bitmap.Config.ARGB_4444)
+            bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
             canvas = Canvas(bitmap)
             canvas.drawColor(Color.LTGRAY)
+            imageV.background = BitmapDrawable(getResources(), bitmap)
             prevx = 0F
             prevy = 0F
 
         }
     }
 
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         val action: Int = MotionEventCompat.getActionMasked(event)
         if(action == 0 || action == 1){
+            canvas.drawCircle(event.x, event.y, 4.toFloat(), Paint(Color.parseColor("black")))
+            imageV.background = BitmapDrawable(getResources(), bitmap)
             prevy = 0F
             prevx = 0F
         }
         return when (action) {
+
 
             (MotionEvent.ACTION_MOVE) -> {
 
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 // draw circle
                 canvas.drawCircle(horoffset, vertoffset, 1.toFloat(), Paint(Color.parseColor("black")))
                 if(prevx != 0F && prevy != 0F) {
-                    canvas.drawLine(prevx-7, prevy-7, horoffset-7, vertoffset-6,paint)
+                    canvas.drawLine(prevx-7 , prevy-7, horoffset-7, vertoffset-7,paint)
                     canvas.drawLine(prevx-6, prevy-6, horoffset-6, vertoffset-6,paint)
                     canvas.drawLine(prevx-5, prevy-5, horoffset-5, vertoffset-5,paint)
                     canvas.drawLine(prevx-4, prevy-4, horoffset-4, vertoffset-4,paint)

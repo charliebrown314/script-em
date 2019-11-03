@@ -13,7 +13,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="481dp"
+            tools:layout_editor_absoluteY="481dp" />
+    />
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/clear"
@@ -22,6 +24,6 @@
             android:text="Clear"
             tools:layout_editor_absoluteX="1dp"
             android:onClick="sendMessage"
-            tools:layout_editor_absoluteY="546dp" />
+            tools:layout_editor_absoluteY="481dp" />
 
 </android.support.constraint.ConstraintLayout>
