@@ -17,6 +17,7 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.widget.Button
+import com.example.script_em.structures.Char
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val DEBUG_TAG = "Velocity"
@@ -27,6 +28,20 @@ class MainActivity : AppCompatActivity() {
     var prevy: Float =0F
     var bitmap = Bitmap.createBitmap(1080, 2260, Bitmap.Config.ARGB_4444)
     var canvas = Canvas(bitmap)
+
+    var size: Double = 8.0
+    var selectedChar: Char = Char(listOf())
+    var checking: Boolean = false
+    var name: String = ""
+    fun process(){
+        if(checking){
+            com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
+                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size))
+        }
+        else{
+            com.example.script_em.writingProcessing.create.makeChar.finishChar(name, size)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
