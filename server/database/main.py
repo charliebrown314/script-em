@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Blueprint
 import json
 import sqlite3
 
-app = Flask(__name__)
+app = Blueprint('app',__name__)
 
 @app.route('/')
 def table():
