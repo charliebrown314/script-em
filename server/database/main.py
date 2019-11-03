@@ -7,7 +7,7 @@ conn = sqlite3.connect('test.db')
 
 @app.route('/')
 def createTable():
-    conn.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT")
+    conn.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
 
 @app.route('/saveChar', methods = ['GET'])
 def saveChar(jsonString):
@@ -25,5 +25,5 @@ def sendInputResponse(jsonString):
         return jsonString
 
 if __name__ == "__main__":
-    app.run(port=8080,debug=True)
+    app.run(port=8080, debug=True)
 
