@@ -3,7 +3,11 @@ package com.example.script_em.writingProcessing.check
 import com.example.script_em.structures.Char
 import com.example.script_em.structures.Point
 
+<<<<<<< HEAD
 object check_input {
+=======
+class check_input(val firstInput: Sequence<Point>, char: String) {
+>>>>>>> eee989961d8cd1f5a0df3ac7e1e5e6c333517754
 
 
 
