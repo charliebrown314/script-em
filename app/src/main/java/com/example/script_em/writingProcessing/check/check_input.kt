@@ -1,47 +1,38 @@
 package com.example.script_em.writingProcessing.check
 
+import com.example.script_em.structures.Char
 import com.example.script_em.structures.Point
 
-class check_input(val firstInput: Sequence<Point>, char: ) {
+object check_input {
 
 
 
-    fun checkLayer(inputSeq: Sequence<Point>, initialSeq: Sequence<Point>): Boolean {
-        /* Run on all but first Input Sequence;
-         * This will determine if a layer is correct when it is written;
-          * Needs to:
-          * - Check slope is reasonable
-          * - If slope is reasonable, check proportion is reasonable*/
-
-
-        return false
-    }
-
-    fun isInRange(intialSeq: List<Point>, input: Point): Boolean {
-        var valid: Boolean = false
-        for (point in intialSeq) {
+    fun isInRange(correctList: MutableSet<Point>, input: Point): Pair<Boolean, Point> {
+        for (point in correctList) {
             //  point falls within the accepted range
-            if ((input.x > point.x-10 && input.x < point.x + 10) && (input.y > point.y-10 && input.y < point.y+10)) {
-                valid = true
-                break
+            if ((input.x > point.x-point.size && input.x < point.x + point.size)
+                && (input.y > point.y-point.size && input.y < point.y+point.size)) {
+                return Pair(true, point)
             }
         }
-        return valid
+        return Pair(false, Point(0.0,0.0))
     }
 
-    fun charCorrectness(initialList: List<Point>, scaledList: List<Point>): Double {
+    fun charCorrectness(correct: Char, input: Char): Double {
         //  percentage of how accurate the stroke is according to the standard solution
+        var correctListChecklist = correct.points
         var length: Int = 0
         var passed: Int = 0
-        var listBuffer: List<Point> = scaledList
-        for (point in scaledList) {
-            if (isInRange(initialList, point)) {
-
+        for (point in input.points) {
+            val inRange = isInRange(correct.points, point)
+            if (inRange.first) {
+                correctListChecklist.remove(inRange.second)
                 passed++
             }
             length++
         }
-        return (passed.toDouble()/length.toDouble())*100
+        return (((passed.toDouble()/length.toDouble())*.4)
+        + ((correctListChecklist.size.toDouble()/correct.points.size.toDouble())*.6))*100
     }
 
 }

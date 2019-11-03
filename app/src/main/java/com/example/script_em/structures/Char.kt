@@ -4,6 +4,5 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 
-class Char(val points: List<Point>) {
-
+class Char(val points: MutableSet<Point>) {
 }
