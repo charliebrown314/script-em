@@ -1,15 +1,39 @@
 package com.example.script_em.writingProcessing.check
 
+import com.beust.klaxon.Json
+import com.beust.klaxon.Klaxon
 import com.example.script_em.structures.Char
 import com.example.script_em.structures.Point
+import khttp.get
+
+class reqChar(val name: String, val list: List<Point>, val size: Double)
 
 object check_input {
 
-    fun isInRange(correctList: MutableSet<Point>, input: Point): Pair<Boolean, Point> {
+
+    fun requestChar(name: String): Char {
+        val request = get(
+            url = "",
+            params = mapOf("name" to name)
+        )
+        val jsParsed = Klaxon().parse<reqChar>(request.text)
+        val retChar = Char(jsParsed!!.list)
+        retChar.pointSize = jsParsed.size
+        return retChar
+    }
+
+    fun requestCharNames(): List<String> {
+        val request = get(
+            url= ""
+        )
+        return Klaxon().parseArray<String>(request.text)!!
+    }
+
+    fun isInRange(correctList: List<Point>, input: Point, size: Double): Pair<Boolean, Point> {
         for (point in correctList) {
             //  point falls within the accepted range
-            if ((input.x > point.x-point.size && input.x < point.x + point.size)
-                && (input.y > point.y-point.size && input.y < point.y+point.size)) {
+            if ((input.x > point.x-size && input.x < point.x + size)
+                && (input.y > point.y-size && input.y < point.y+size)) {
                 return Pair(true, point)
             }
         }
@@ -18,19 +42,20 @@ object check_input {
 
     fun charCorrectness(correct: Char, input: Char): Double {
         //  percentage of how accurate the stroke is according to the standard solution
-        var correctListChecklist = correct.points
+        var correctListChecklist = correct.points.toMutableSet()
         var length: Int = 0
         var passed: Int = 0
         for (point in input.points) {
-            val inRange = isInRange(correct.points, point)
+            val inRange = isInRange(correct.points, point, correct.pointSize)
             if (inRange.first) {
                 correctListChecklist.remove(inRange.second)
                 passed++
             }
             length++
         }
-        return (((passed.toDouble()/length.toDouble())*.4)
-        + ((correctListChecklist.size.toDouble()/correct.points.size.toDouble())*.6))*100
+        val percentIn = (passed.toDouble() / length.toDouble())
+        val squaresFilled = 1 - (correctListChecklist.size.toDouble()/correct.points.size.toDouble())
+        return ((percentIn * .4) + (squaresFilled * .6)) * 100
     }
 
 }
