@@ -3,7 +3,7 @@ import json
 import sqlite3
 
 app = Flask(__name__)
-conn = sqlite3.connect()
+conn = sqlite3.connect('database.db')
 
 cursor = conn.cursor()
 cursor.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
