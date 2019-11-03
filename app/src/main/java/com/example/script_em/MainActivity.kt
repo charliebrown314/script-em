@@ -22,7 +22,7 @@ private const val DEBUG_TAG = "Velocity"
 
 class MainActivity : AppCompatActivity() {
     //var points: Array[Array[Int]] =
-    val bitmap = Bitmap.createBitmap(1060, 1080, Bitmap.Config.ARGB_4444)
+    val bitmap = Bitmap.createBitmap(1060, 2160, Bitmap.Config.ARGB_4444)
     val canvas = Canvas(bitmap)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

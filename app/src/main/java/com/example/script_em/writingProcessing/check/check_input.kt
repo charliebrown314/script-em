@@ -2,7 +2,7 @@ package com.example.script_em.writingProcessing.check
 
 import com.example.script_em.structures.Point
 
-class check_input(val firstInput: Sequence<Point>, char: ) {
+class check_input(val firstInput: Sequence<Point>, char: String) {
 
 
 
