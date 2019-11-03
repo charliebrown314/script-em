@@ -76,6 +76,9 @@ class MainActivity : AppCompatActivity() {
     fun NewInput(view: View){
         com.example.script_em.writingProcessing.create.makeChar.finishChar(size, storage)
     }
+
+
+
     fun CurrentSym(Str: String){
         val textView = findViewById<TextView>(R.id.editText)
         textView.setText("string").toString()
@@ -91,8 +94,8 @@ class MainActivity : AppCompatActivity() {
             imageV.background = BitmapDrawable(getResources(), bitmap)
             prevx = 0F
             prevy = 0F
-            com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
-                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size))
+            CurrentSym("Percent Correct: " + com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
+                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size)).toString())
         }
     }
 
