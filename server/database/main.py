@@ -6,7 +6,7 @@ app = Flask(__name__)
 conn = sqlite3.connect('database.db')
 
 cursor = conn.cursor()
-cursor.execute("CREATE TABLE IF NOT EXIST characters (CHAR_NAME TEXT, points TEXT)")
+cursor.execute("CREATE TABLE IF NOT EXISTS characters (CHAR_NAME TEXT, points TEXT)")
 
 @app.route('/saveChar', methods = ['GET'])
 def saveChar(name, jsonString):
