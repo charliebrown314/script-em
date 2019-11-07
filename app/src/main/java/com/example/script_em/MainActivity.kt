@@ -64,16 +64,16 @@ class MainActivity : AppCompatActivity() {
                     if(storage.charList.size - 1 > storage.selectedChar){
                      storage.selectedChar += 1
                         selectedChar = storage.charList[storage.selectedChar]
-                        CurrentSym("Current character is: " + selectedChar.name)
+                        CurrentSym("Current char: " + selectedChar.name)
                     }
                     else {
                         if (storage.selectedChar != 0) {
                             storage.selectedChar = 0
                             selectedChar = storage.charList[storage.selectedChar]
-                            CurrentSym("Current character is: " + selectedChar.name)
+                            CurrentSym("Current char: " + selectedChar.name)
                         }
                         else{
-                            CurrentSym("Current character is: " + selectedChar.name)
+                            CurrentSym("Current char: " + selectedChar.name)
                         }
                     }
         }
@@ -124,8 +124,8 @@ class MainActivity : AppCompatActivity() {
             imageV.background = BitmapDrawable(getResources(), bitmap)
             prevx = 0F
             prevy = 0F
-            CurrentSym("Percent Correct: " + com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
-                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size)).toString())
+            CurrentSym("% Correct: " + com.example.script_em.writingProcessing.check.check_input.charCorrectness(selectedChar,
+                com.example.script_em.writingProcessing.create.makeChar.finalizeChar(size)).toInt().toString())
         }
     }
 

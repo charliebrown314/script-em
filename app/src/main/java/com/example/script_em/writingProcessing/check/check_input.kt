@@ -24,7 +24,7 @@ object check_input {
 
     fun requestCharNames(): List<String> {
         val request = get(
-            url= ""
+            url = ""
         )
         return Klaxon().parseArray<String>(request.text)!!
     }
@@ -32,12 +32,13 @@ object check_input {
     fun isInRange(correctList: List<Point>, input: Point, size: Double): Pair<Boolean, Point> {
         for (point in correctList) {
             //  point falls within the accepted range
-            if ((input.x > point.x-size && input.x < point.x + size)
-                && (input.y > point.y-size && input.y < point.y+size)) {
+            if ((input.x > point.x - size && input.x < point.x + size)
+                && (input.y > point.y - size && input.y < point.y + size)
+            ) {
                 return Pair(true, point)
             }
         }
-        return Pair(false, Point(0.0,0.0))
+        return Pair(false, Point(0.0, 0.0))
     }
 
     fun charCorrectness(correct: Char, input: Char): Double {
@@ -54,11 +55,11 @@ object check_input {
             length++
         }
         val percentIn = (passed.toDouble() / length.toDouble())
-        val squaresFilled = 1 - (correctListChecklist.size.toDouble()/correct.points.size.toDouble())
+        val squaresFilled =
+            1 - (correctListChecklist.size.toDouble() / correct.points.size.toDouble())
         println(percentIn.toString() + ", " + squaresFilled)
         println(correct.points[0].toString())
         println(input.points[0])
-        return ((percentIn * .4) + (squaresFilled * .6)) * 100
+        return ((percentIn * .75) + (squaresFilled * .25)) * 100
     }
-
 }
